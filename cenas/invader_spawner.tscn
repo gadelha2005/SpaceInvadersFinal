@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6684yp6toef"]
+
+[ext_resource type="Script" path="res://cenas/invader_spawner.gd" id="1_3mw1q"]
+
+[node name="InvaderSpawner" type="Node2D"]
+position = Vector2(0, -190)
+script = ExtResource("1_3mw1q")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="shotTimer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="shotTimer" to="." method="_on_shot_timer_timeout"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://norr1f8kashu"]
+
+[ext_resource type="Script" path="res://cenas/ufo.gd" id="1_2khrj"]
+[ext_resource type="Texture2D" uid="uid://5s1qaxknbe1f" path="res://Assets Space Invades/Ufo/Ufo.png" id="1_4m8p2"]
+[ext_resource type="Script" path="res://cenas/UfoShooting.gd" id="3_o0trh"]
+[ext_resource type="Script" path="res://cenas/SpawnTimer.gd" id="4_1x2hk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2usei"]
+radius = 5.5
+height = 14.0
+
+[node name="Ufo" type="Area2D"]
+collision_layer = 2
+collision_mask = 64
+script = ExtResource("1_2khrj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("1_4m8p2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(4, 4)
+shape = SubResource("CapsuleShape2D_2usei")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="UfoShooting" type="Node2D" parent="."]
+script = ExtResource("3_o0trh")
+
+[node name="SpawnTimer" type="Timer" parent="UfoShooting"]
+autostart = true
+script = ExtResource("4_1x2hk")
+min_timer = 1
+max_timer = 3
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="UfoShooting/SpawnTimer" to="UfoShooting" method="_on_spawn_timer_timeout"]

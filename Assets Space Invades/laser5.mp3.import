@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7onc7gktay87"
+path="res://.godot/imported/laser5.mp3-d6aa157b1262a7f61896454028fb8401.mp3str"
+
+[deps]
+
+source_file="res://Assets Space Invades/laser5.mp3"
+dest_files=["res://.godot/imported/laser5.mp3-d6aa157b1262a7f61896454028fb8401.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
